@@ -1,13 +1,52 @@
-// 定義變數來儲存累積及目前使用者數量
-var cumulativeCount = 10; // 累積使用者數量的初始值，您可以根據實際情況修改
-var currentCount = 5; // 目前使用者數量的初始值，您可以根據實際情況修改
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>數講解答</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-// 更新使用者數量的函式
-function updateUserCount() {
-    // 更新 HTML 元素中顯示的累積使用者數量及目前使用者數量
-    document.getElementById('cumulativeCount').innerText = cumulativeCount;
-    document.getElementById('currentCount').innerText = currentCount;
+<div class="tags">
+    <a href="2-1.html">2-1 函數與函數圖形</a>
+    <a href="3-1.html">3-1 三角形與多邊形的內角與外角</a>
+    <a href="3-2.html">3-2 尺規作圖</a>
+    <a href="3-3.html">3-3 三角形的全等性質</a>
+    <a href="3-4.html">3-4 中垂線與角平分線的性質</a>
+    <a href="3-5.html">3-5 三角形的邊角關係</a>
+    <a href="4-1.html">4-1 平行</a>
+    <a href="4-2.html">4-2 平行四邊形</a>
+    <a href="4-3.html">4-3 特殊四邊形的性質</a>
+</div>
+
+<!-- 顯示累積及目前使用者數量 -->
+<div>
+    累積使用者數量: <span id="cumulativeCount"></span><br>
+    目前使用者數量: <span id="currentCount"></span>
+</div>
+
+<script>
+// 定義函式來從後端獲取數據並更新使用者數量
+function updateUserData() {
+    fetch('https://your-backend-url.com/userdata')
+    .then(response => response.json())
+    .then(data => {
+        // 更新 HTML 元素中顯示的累積使用者數量及目前使用者數量
+        document.getElementById('cumulativeCount').innerText = data.cumulativeCount;
+        document.getElementById('currentCount').innerText = data.currentCount;
+    })
+    .catch(error => console.error('Error updating user data:', error));
 }
 
 // 當頁面載入時呼叫函式來顯示使用者數量
-updateUserCount();
+updateUserData();
+
+// 每分鐘更新一次使用者數量
+setInterval(updateUserData, 60); // 每分鐘更新一次
+</script>
+
+<h1 style="font-size: 16px; text-align: center;">豬嘎嘎(❁´3`❁) </h1>
+
+</body>
+</html>
