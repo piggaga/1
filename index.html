@@ -1,10 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>數講解答</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        // 定義變數來儲存累積及目前使用者數量
+        var cumulativeCount = 10; // 累積使用者數量的初始值，您可以根據實際情況修改
+        var currentCount = 0; // 目前使用者數量的初始值，您可以根據實際情況修改
+
+        // 更新使用者數量的函式
+        function updateUserCount() {
+            // 更新 HTML 元素中顯示的累積使用者數量及目前使用者數量
+            document.getElementById('cumulativeCount').innerText = cumulativeCount;
+            document.getElementById('currentCount').innerText = currentCount;
+        }
+
+        // 當頁面載入時呼叫函式來顯示使用者數量
+        updateUserCount();
+    </script>
 </head>
 <body>
 
@@ -20,6 +35,12 @@
     <a href="4-3.html">4-3 特殊四邊形的性質</a>
 </div>
 
+<!-- 顯示累積及目前使用者數量 -->
+<div>
+    累積使用者數量: <span id="cumulativeCount"></span><br>
+    目前使用者數量: <span id="currentCount"></span>
+</div>
+
 </body>
-   <h1 style="font-size: 16px; text-align: center;">豬嘎嘎(❁´3`❁) </h1>
+<h1 style="font-size: 16px; text-align: center;">豬嘎嘎(❁´3`❁) </h1>
 </html>
