@@ -27,25 +27,23 @@
 </div>
 
 <script>
-    // 定義變數來儲存累積及目前使用者數量
-    var cumulativeCount = 10; // 累積使用者數量的初始值，您可以根據實際情況修改
-    var currentCount = 5; // 目前使用者數量的初始值，您可以根據實際情況修改
-
-    // 更新使用者數量的函式
-    function updateUserCount() {
+// 定義函式來從後端獲取數據並更新使用者數量
+function updateUserData() {
+    fetch('https://your-backend-url.com/userdata')
+    .then(response => response.json())
+    .then(data => {
         // 更新 HTML 元素中顯示的累積使用者數量及目前使用者數量
-        var cumulativeElement = document.getElementById('cumulativeCount');
-        var currentElement = document.getElementById('currentCount');
-        
-        console.log("cumulativeElement:", cumulativeElement);
-        console.log("currentElement:", currentElement);
-        
-        cumulativeElement.innerText = cumulativeCount;
-        currentElement.innerText = currentCount;
-    }
+        document.getElementById('cumulativeCount').innerText = data.cumulativeCount;
+        document.getElementById('currentCount').innerText = data.currentCount;
+    })
+    .catch(error => console.error('Error updating user data:', error));
+}
 
-    // 當頁面載入時呼叫函式來顯示使用者數量
-    updateUserCount();
+// 當頁面載入時呼叫函式來顯示使用者數量
+updateUserData();
+
+// 每60毫秒更新一次使用者數量
+setInterval(updateUserData, 60); // 每60毫秒更新一次
 </script>
 
 <h1 style="font-size: 16px; text-align: center;">豬嘎嘎(❁´3`❁) </h1>
